@@ -43,6 +43,8 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             if (text.Contains("listusers"))
                 await MessageListOfUsersAsync(turnContext, cancellationToken);
+            else if (text.Contains("tenant"))
+                await MessageAllUsersInTenantAsync(turnContext, cancellationToken);
             else if (text.Contains("mention"))
                 await MentionActivityAsync(turnContext, cancellationToken);
             else if (text.Contains("who"))
@@ -94,6 +96,12 @@ namespace Microsoft.BotBuilderSamples.Bots
                                 Type = ActionTypes.MessageBack,
                                 Title = "Message list of users",
                                 Text = "listUsers"
+                            },
+                            new CardAction
+                            {
+                                Type = ActionTypes.MessageBack,
+                                Title = "Message all users in tenant",
+                                Text = "tenant"
                             },
                             new CardAction
                             {
@@ -154,6 +162,18 @@ namespace Microsoft.BotBuilderSamples.Bots
             var message = MessageFactory.Text("Hello user! You are part of the batch.");
 
             var operationId = await TeamsInfo.SendMessageToListOfUsersAsync(turnContext, message, membersList, tenantId, cancellationToken);
+
+            await turnContext.SendActivityAsync(MessageFactory.Text($"All messages have been sent. OperationId: {operationId}"), cancellationToken);
+        }
+
+        private async Task MessageAllUsersInTenantAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+
+            var tenantId = turnContext.Activity.Conversation.TenantId;
+
+            var message = MessageFactory.Text("Hello user! You are part of the batch - tenant.");
+
+            var operationId = await TeamsInfo.SendMessageToAllUsersInTenantAsync(turnContext, message, tenantId, cancellationToken);
 
             await turnContext.SendActivityAsync(MessageFactory.Text($"All messages have been sent. OperationId: {operationId}"), cancellationToken);
         }

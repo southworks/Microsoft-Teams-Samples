@@ -171,7 +171,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             var tenantId = turnContext.Activity.Conversation.TenantId;
 
-            var message = MessageFactory.Text("Hello user! You are part of the batch - tenant.");
+            var message = MessageFactory.Text("Hello user! You received this tenant message from batch.");
 
             var operationId = await TeamsInfo.SendMessageToAllUsersInTenantAsync(turnContext, message, tenantId, cancellationToken);
 

@@ -43,6 +43,8 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             if (text.Contains("listusers"))
                 await MessageListOfUsersAsync(turnContext, cancellationToken);
+            else if (text.Contains("failedentries"))
+                await GetFailedEntriesAsync(turnContext, cancellationToken);
             else if (text.Contains("mention"))
                 await MentionActivityAsync(turnContext, cancellationToken);
             else if (text.Contains("who"))
@@ -94,6 +96,12 @@ namespace Microsoft.BotBuilderSamples.Bots
                                 Type = ActionTypes.MessageBack,
                                 Title = "Message list of users",
                                 Text = "listUsers"
+                            },
+                            new CardAction
+                            {
+                                Type = ActionTypes.MessageBack,
+                                Title = "Get failed entries",
+                                Text = "failedEntries"
                             },
                             new CardAction
                             {
@@ -156,6 +164,25 @@ namespace Microsoft.BotBuilderSamples.Bots
             var operationId = await TeamsInfo.SendMessageToListOfUsersAsync(turnContext, message, membersList, tenantId, cancellationToken);
 
             await turnContext.SendActivityAsync(MessageFactory.Text($"All messages have been sent. OperationId: {operationId}"), cancellationToken);
+        }
+
+        private async Task GetFailedEntriesAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var operationId = "operation-1";
+
+            var entriesResponse = await TeamsInfo.GetPagedFailedEntriesAsync(turnContext, operationId, cancellationToken);
+            
+            await turnContext.SendActivityAsync(MessageFactory.Text($"Operation {operationId} had {entriesResponse.FailedEntries.Count} failed entries"), cancellationToken);
+
+            while (entriesResponse.ContinuationToken != null)
+            {
+                await turnContext.SendActivityAsync(MessageFactory.Text("Getting next page of entries..."), cancellationToken);
+                
+                //call again with continuation token
+                entriesResponse = await TeamsInfo.GetPagedFailedEntriesAsync(turnContext, operationId, cancellationToken);
+                
+                await turnContext.SendActivityAsync(MessageFactory.Text($"Operation {operationId} had {entriesResponse.FailedEntries.Count} more failed entries"), cancellationToken);
+            }
         }
 
         private async Task GetSingleMemberAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)

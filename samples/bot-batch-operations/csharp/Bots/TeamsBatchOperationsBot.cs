@@ -43,6 +43,8 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             if (text.Contains("listusers"))
                 await MessageListOfUsersAsync(turnContext, cancellationToken);
+            else if (text.Contains("listchannels"))
+                await MessageListOfChannelsAsync(turnContext, cancellationToken);
             else if (text.Contains("failedentries"))
                 await GetFailedEntriesAsync(turnContext, cancellationToken);
             else if (text.Contains("mention"))
@@ -94,8 +96,20 @@ namespace Microsoft.BotBuilderSamples.Bots
                             new CardAction
                             {
                                 Type = ActionTypes.MessageBack,
+                                Title = "Message list of channels",
+                                Text = "listChannels"
+                            },
+                            new CardAction
+                            {
+                                Type = ActionTypes.MessageBack,
                                 Title = "Message list of users",
                                 Text = "listUsers"
+                            },
+                            new CardAction
+                            {
+                                Type = ActionTypes.MessageBack,
+                                Title = "Get Operation State",
+                                Text = "operationState"
                             },
                             new CardAction
                             {
@@ -164,6 +178,26 @@ namespace Microsoft.BotBuilderSamples.Bots
             var operationId = await TeamsInfo.SendMessageToListOfUsersAsync(turnContext, message, membersList, tenantId, cancellationToken);
 
             await turnContext.SendActivityAsync(MessageFactory.Text($"All messages have been sent. OperationId: {operationId}"), cancellationToken);
+        }
+
+        private async Task MessageListOfChannelsAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var teamsChannelId = turnContext.Activity.TeamsGetChannelId();
+
+            var members = new List<object>
+            {
+                new { Id = teamsChannelId },
+                new { Id = teamsChannelId.Remove(20, 1).Insert(20, "w") },
+                new { Id = teamsChannelId.Remove(20, 1).Insert(20, "x") },
+                new { Id = teamsChannelId.Remove(20, 1).Insert(20, "y") },
+                new { Id = teamsChannelId.Remove(20, 1).Insert(20, "z") },
+            };
+
+            var proactiveMessage = MessageFactory.Text($"Hello channel! I'm a Teams conversation bot.");
+
+            await TeamsInfo.SendMessageToListOfChannelsAsync(turnContext, proactiveMessage, members, turnContext.Activity.Conversation.TenantId, cancellationToken);
+
+            await turnContext.SendActivityAsync(MessageFactory.Text("All messages have been sent."), cancellationToken);
         }
 
         private async Task GetFailedEntriesAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)

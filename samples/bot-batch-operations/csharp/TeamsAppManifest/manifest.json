@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
   "manifestVersion": "1.14",
   "version": "1.0.0",
-  "id": "a7517c63-eb15-4415-82f4-bf7d32724a0e",
+  "id": "d01f676a-68ad-4d15-b39c-662b773f175a",
   "packageName": "com.teams.sample.teamsbatchoperationsbot",
   "developer": {
     "name": "TeamsBatchOperationsBot",
@@ -25,7 +25,7 @@
   "accentColor": "#FFFFFF",
   "bots": [
     {
-      "botId": "a7517c63-eb15-4415-82f4-bf7d32724a0e",
+      "botId": "d01f676a-68ad-4d15-b39c-662b773f175a",
       "scopes": [
         "personal",
         "groupchat",

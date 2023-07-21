@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-	<ProjectReference Include="C:\Repositories\BotBuilder-dotnet\libraries\integration\Microsoft.Bot.Builder.Integration.ApplicationInsights.Core\Microsoft.Bot.Builder.Integration.ApplicationInsights.Core.csproj" />
-	  <ProjectReference Include="C:\Repositories\BotBuilder-dotnet\libraries\integration\Microsoft.Bot.Builder.Integration.AspNet.Core\Microsoft.Bot.Builder.Integration.AspNet.Core.csproj" />
+	<ProjectReference Include="C:\Users\edwar\Internship-Code\Day2\botbuilder-dotnet\libraries\integration\Microsoft.Bot.Builder.Integration.ApplicationInsights.Core\Microsoft.Bot.Builder.Integration.ApplicationInsights.Core.csproj" />
+	  <ProjectReference Include="C:\Users\edwar\Internship-Code\Day2\botbuilder-dotnet\libraries\integration\Microsoft.Bot.Builder.Integration.AspNet.Core\Microsoft.Bot.Builder.Integration.AspNet.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

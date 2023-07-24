@@ -1,38 +1,28 @@
 ---
 page_type: sample
-description: This sample app demonstrates use of different bot conversation events available in bot framework v4 for personal and teams scope.
+description: This sample app demonstrates use of different batch operations as part of the Microsoft Teams APIs.
 products:
 - office-teams
-- office
-- office-365
 languages:
 - csharp
 extensions:
  contentType: samples
  createdDate: "10/17/2019 13:38:25 PM"
-urlFragment: officedev-microsoft-teams-samples-bot-conversation-csharp
+urlFragment: officedev-microsoft-teams-samples-bot-batch-operations-csharp
 ---
 
-# Teams Conversation Bot
+# Teams Batch Operations Bot
 
-Bot Framework v4 Conversation Bot sample for Teams ([Messages in bot conversations](https://learn.microsoft.com/microsoftteams/platform/bots/how-to/conversations/conversation-messages?tabs=dotnet)).
+Bot Framework v4 Batch Operations Bot sample for Teams.
 
-This bot has been created using [Bot Framework](https://dev.botframework.com). This sample shows
-how to incorporate basic conversational flow into a Teams application. It also illustrates a few of the Teams specific calls you can make from your bot.
+This bot has been created using [Bot Framework](https://dev.botframework.com). This sample demonstrates the different batch operations you can make from your bot.
 
 ## Included Features
 * Bots
 * Adaptive Cards
-* Teams Conversation Events
-* Immersive Reading Support for Cards
+* Batch API calls
 
-## Interaction with bot
-![bot-conversations ](Images/bot-conversations.gif)
-
-## Try it yourself - experience the App in your Microsoft Teams client
-Please find below demo manifest which is deployed on Microsoft Azure and you can try it yourself by uploading the app package (.zip file link below) to your teams and/or as a personal app. (Sideloading must be enabled for your tenant, [see steps here](https://docs.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading)).
-
-**Teams Conversation Bot:** [Manifest](/samples/bot-conversation/csharp/demo-manifest/bot-conversation.zip)
+**Teams Batch Operations Bot:** [Manifest](/samples/bot-batch-operations/csharp/demo-manifest/bot-batch-operations.zip)
 
 ## Prerequisites
 
@@ -71,8 +61,8 @@ the Teams service needs to call into the bot.
 1) If you are using Visual Studio
    - Launch Visual Studio
    - File -> Open -> Project/Solution
-   - Navigate to `samples/bot-conversation/csharp` folder
-   - Select `TeamsConversationBot.csproj` or `TeamsConversationBot.sln`file
+   - Navigate to `samples/bot-batch-operations/csharp` folder
+   - Select `TeamsBatchOperationsBot.csproj` or `TeamsBatchOperationsBot.sln`file
 
 1) Update the `appsettings.json` configuration for the bot to use the MicrosoftAppId, MicrosoftAppPassword, MicrosoftAppTenantId generated in Step 2 (App Registration creation). (Note the App Password is referred to as the "client secret" in the azure portal and you can always create a new client secret anytime.)
     - Also, set MicrosoftAppType in the `appsettings.json`. (**Allowed values are: MultiTenant(default), SingleTenant, UserAssignedMSI**)
@@ -86,8 +76,7 @@ the Teams service needs to call into the bot.
     - **Upload** the `manifest.zip` to Teams (In Teams Apps/Manage your apps click "Upload an app". Browse to and Open the .zip file. At the next dialog, click the Add button.)
     - Add the app to personal/team/groupChat scope (Supported scopes)
 
-**Note**: If you are facing any issue in your app, please uncomment [this](https://github.com/OfficeDev/Microsoft-Teams-Samples/blob/main/samples/bot-conversation/csharp/AdapterWithErrorHandler.cs#L25) line and put your debugger for local debug.
-
+**Note**: If you are facing any issue in your app, please uncomment [this](https://github.com/OfficeDev/Microsoft-Teams-Samples/blob/main/samples/bot-batch-operations/csharp/AdapterWithErrorHandler.cs#L25) line and put your debugger for local debug.
 
 ## Running the sample
 
@@ -97,234 +86,35 @@ You can interact with this bot in Teams by sending it a message, or selecting a 
   - **Result:** The bot will send the welcome card for you to interact with
   - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **Adding bot UI:**
-  ![personal-AddBot ](Images/personal-AddBot.png)
-
-   **Added bot UI:**
-  ![personal-AddedBot ](Images/personal-AddedBot.png)
-
-   **Show Welcome command interaction:**
-  ![personal-WelcomeCard-Interaction ](Images/personal-WelcomeCard-Interaction.png)
-
-   - **Group Chat Scope Interactions:**
-
-   **Adding bot UI:**
-  ![groupChat-AddBot ](Images/groupChat-AddBot.png)
-
-   **Added bot UI:**
-  ![groupChat-AddedBot ](Images/groupChat-AddedBot.png)
-
-   **Show Welcome command interaction:**
-  ![groupChat-BotCommands-interactions ](Images/groupChat-BotCommands-interactions.png)
-
-  - **Team Scope Interactions:**
-
-   **Adding bot UI:**
-  ![team-AddBot ](Images/team-AddBot.png)
-
-   **Added bot UI:**
-  ![team-AddedBot ](Images/team-AddedBot.png)
-
-   **Show Welcome command interaction:**
-  ![team-WelcomeCommand-Card ](Images/team-WelcomeCommand-Card.png)
-
-2. **MentionMe**
-  - **Result:** The bot will respond to the message and mention the user
-  - **Valid Scopes:** personal, group chat, team chat
-
-  - **Personal Scope Interactions:**
-
-   **MentionMe command interaction:**
-  ![personal-MentionMeCommand ](Images/personal-MentionMeCommand.png)
-
-   - **Group Chat Scope Interactions:**
-
-   **MentionMe command interaction:**
-  ![groupChat-BotCommands-interactions ](Images/groupChat-BotCommands-interactions.png)
-
-  - **Team Scope Interactions:**
-
-   **MentionMe command interaction:**
-  ![team-MentionCommand-Interaction ](Images/team-MentionCommand-Interaction.png)
-
-3. **MessageAllMembers**
-  - **Result:** The bot will send a 1-on-1 message to each member in the current conversation (aka on the conversation's roster).
-  - **Valid Scopes:** personal, group chat, team chat
-
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ](Images/personal-MessageAllMembersCommand.png)
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ](Images/groupChat-BotCommands-interactions.png)
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ](Images/team-MessageAllMembers-interaction.png)
-
-4. **ImmersiveReader**
-- You can use the immersive reader property of adaptive cards by using the speak property.
-`immersivereader` command will send an adpative card in teams chat.
-![immersive-reader-card](Images/immersiveReaderCard.png)
-
-- Select the immersive reader option for running the speak property.
-![immersive-reader-option](Images/immersiveReaderOption.png)
-
-- A new screen will be open and the text will be read by default which is mentioned inside the speak property of adaptive card.
-![immersive-reader-screen](Images/immersiveReaderScreen.png)
-
- 5. **Message update events for user messages**
-- You will recieve event updates for message edit/delete features.
-
-- Message is edited
-![message-edit](Images/messageEditEvent.png)
-
-- Message is soft-deleted
-![message-soft-delete](Images/softDeleteMessage.png)
-
-- Message is restored
-![message-undelete](Images/messageUndelete.png)
-
-6. **Message A List of Channels**
+2. **Message A List of Channels**
 - **Result:** The bot will send a message to each channel in the appsettings.json file (by default the current channel).
   - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-7. **Message a List of Users**
+3. **Message a List of Users**
 - **Result:** The bot will send a 1-on-1 message to each user in the appsettings.json file (by default current user)
 - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-8 **Message All Users in a Team:**
+4. **Message All Users in a Team:**
 - **Result:** The bot will send a 1-on-1 message to each user in the current team and return the operation ID
 - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-9. **Send message to all users in a tenant**
+5. **Send message to all users in a tenant**
 - **Result:** The bot will send a 1-on-1 message to each user in the current tenant and return the operation ID
 - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-10. **Get Operation State**
+6. **Get Operation State**
 - **Result:** The bot will open a dialog and ask for the operation ID and return if the corresponding operation is Ongoing, Completed, or Failed
 - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-11. **Get Failed Entries Paginated**
+7. **Get Failed Entries Paginated**
 - **Result:** The bot will show a list of the failed entries, and provide the continuation token to see multiple pages
 - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-12. **Cancel Operation**
+8. **Cancel Operation**
 - **Result:** The bot will open a dialog and ask for the operation ID and cancel the corresponding operation.
 - **Valid Scopes:** personal, group chat, team chat
 
-  - **Personal Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![personal-MessageAllMembersCommand ]
-
-   - **Group Chat Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![groupChat-BotCommands-interactions ]
-
-  - **Team Scope Interactions:**
-
-   **MessageAllMembers command interaction:**
-  ![team-MessageAllMembers-interaction ]
-
-You can select an option from the command list by typing ```@TeamsConversationBot``` into the compose message area and ```What can I do?``` text above the compose area.
+You can select an option from the command list by typing ```@TeamsBatchOperationsBot``` into the compose message area and ```What can I do?``` text above the compose area.
 
 ## Deploy the bot to Azure
 
@@ -337,5 +127,3 @@ To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](htt
 - [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 - [Azure Bot Service Documentation](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 - [Messages in bot conversations](https://learn.microsoft.com/microsoftteams/platform/bots/how-to/conversations/conversation-messages?tabs=dotnet)
-
-<img src="https://pnptelemetry.azurewebsites.net/microsoft-teams-samples/samples/bot-conversation-csharp" />

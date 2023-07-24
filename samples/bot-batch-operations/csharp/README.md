@@ -191,6 +191,139 @@ You can interact with this bot in Teams by sending it a message, or selecting a 
 - Message is restored
 ![message-undelete](Images/messageUndelete.png)
 
+6. **Message A List of Channels**
+- **Result:** The bot will send a message to each channel in the appsettings.json file (by default the current channel).
+  - **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
+7. **Message a List of Users**
+- **Result:** The bot will send a 1-on-1 message to each user in the appsettings.json file (by default current user)
+- **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
+8 **Message All Users in a Team:**
+- **Result:** The bot will send a 1-on-1 message to each user in the current team and return the operation ID
+- **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
+9. **Send message to all users in a tenant**
+- **Result:** The bot will send a 1-on-1 message to each user in the current tenant and return the operation ID
+- **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
+10. **Get Operation State**
+- **Result:** The bot will open a dialog and ask for the operation ID and return if the corresponding operation is Ongoing, Completed, or Failed
+- **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
+11. **Get Failed Entries Paginated**
+- **Result:** The bot will show a list of the failed entries, and provide the continuation token to see multiple pages
+- **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
+12. **Cancel Operation**
+- **Result:** The bot will open a dialog and ask for the operation ID and cancel the corresponding operation.
+- **Valid Scopes:** personal, group chat, team chat
+
+  - **Personal Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![personal-MessageAllMembersCommand ]
+
+   - **Group Chat Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![groupChat-BotCommands-interactions ]
+
+  - **Team Scope Interactions:**
+
+   **MessageAllMembers command interaction:**
+  ![team-MessageAllMembers-interaction ]
+
 You can select an option from the command list by typing ```@TeamsConversationBot``` into the compose message area and ```What can I do?``` text above the compose area.
 
 ## Deploy the bot to Azure

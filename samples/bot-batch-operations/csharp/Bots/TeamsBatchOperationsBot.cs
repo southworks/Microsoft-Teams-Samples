@@ -193,7 +193,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 new { Id = teamsChannelId.Remove(20, 1).Insert(20, "z") },
             };
 
-            var proactiveMessage = MessageFactory.Text($"Hello channel! I'm a Teams conversation bot.");
+            var proactiveMessage = MessageFactory.Text($"Hello world! I'm a Teams conversation bot.");
 
             await TeamsInfo.SendMessageToListOfChannelsAsync(turnContext, proactiveMessage, members, turnContext.Activity.Conversation.TenantId, cancellationToken);
 

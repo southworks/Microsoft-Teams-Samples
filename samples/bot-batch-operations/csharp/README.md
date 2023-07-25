@@ -22,8 +22,6 @@ This bot has been created using [Bot Framework](https://dev.botframework.com). T
 * Adaptive Cards
 * Batch API calls
 
-**Teams Batch Operations Bot:** [Manifest](/samples/bot-batch-operations/csharp/demo-manifest/bot-batch-operations.zip)
-
 ## Prerequisites
 
 - Microsoft Teams is installed and you have an account
@@ -85,34 +83,50 @@ You can interact with this bot in Teams by sending it a message, or selecting a 
 1. **Show Welcome**
   - **Result:** The bot will send the welcome card for you to interact with
   - **Valid Scopes:** personal, group chat, team chat
+    
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/35295bce-c910-4c6f-b6a1-fd3deba446b4)
 
-2. **Message A List of Channels**
-- **Result:** The bot will send a message to each channel in the appsettings.json file (by default the current channel).
-  - **Valid Scopes:** personal, group chat, team chat
-
-3. **Message a List of Users**
+2. **Message a List of Users**
 - **Result:** The bot will send a 1-on-1 message to each user in the appsettings.json file (by default current user)
 - **Valid Scopes:** personal, group chat, team chat
+
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/75fb9e66-0f8e-41b5-b184-f9ade34e91cd)
+
+3. **Send message to all users in a tenant**
+- **Result:** The bot will send a 1-on-1 message to each user in the current tenant and return the operation ID
+- **Valid Scopes:** personal, group chat, team chat
+
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/3033f0bf-a79e-4948-b4cc-22fec1e33fa8)
 
 4. **Message All Users in a Team:**
 - **Result:** The bot will send a 1-on-1 message to each user in the current team and return the operation ID
 - **Valid Scopes:** personal, group chat, team chat
 
-5. **Send message to all users in a tenant**
-- **Result:** The bot will send a 1-on-1 message to each user in the current tenant and return the operation ID
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/b8334769-a3bf-4608-aa17-ab3cd902dd76)
+
+5. **Message A List of Channels**
+- **Result:** The bot will send a message to each channel in the appsettings.json file (by default the current channel).
 - **Valid Scopes:** personal, group chat, team chat
+
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/f91ad8df-efac-4178-82b6-a0d5e9103441)
 
 6. **Get Operation State**
 - **Result:** The bot will open a dialog and ask for the operation ID and return if the corresponding operation is Ongoing, Completed, or Failed
 - **Valid Scopes:** personal, group chat, team chat
 
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/dcce830c-614e-48ac-9525-256ca3d60016)
+
 7. **Get Failed Entries Paginated**
 - **Result:** The bot will show a list of the failed entries, and provide the continuation token to see multiple pages
 - **Valid Scopes:** personal, group chat, team chat
 
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/811ea046-e310-4dc0-b066-96024860b0ed)
+
 8. **Cancel Operation**
 - **Result:** The bot will open a dialog and ask for the operation ID and cancel the corresponding operation.
 - **Valid Scopes:** personal, group chat, team chat
+
+![image](https://github.com/southworks/Microsoft-Teams-Samples/assets/122501764/96c8fdc4-8d0f-46f9-9319-813c54af81e4)
 
 You can select an option from the command list by typing ```@TeamsBatchOperationsBot``` into the compose message area and ```What can I do?``` text above the compose area.
 
